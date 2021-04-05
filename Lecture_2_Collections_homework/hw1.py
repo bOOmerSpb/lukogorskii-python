@@ -42,10 +42,7 @@ def validate_date(line: str) -> bool:
     line_elements = line.split(" ")
     date = line_elements[-1].strip()
     pattern = re.compile(r"\d{4}-\d{2}-\d{2}")
-    if re.fullmatch(pattern, date):
-        return True
-    else:
-        return False
+    return bool(re.fullmatch(pattern, date))
 
 
 def check_data(filepath: str, validators: Iterable[Callable]) -> str:
