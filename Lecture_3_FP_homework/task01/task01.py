@@ -5,8 +5,6 @@
 # Set pytest as default runner
 # https://stackoverflow.com/questions/6397063/how-do-i-configure-pycharm-to-run-py-test-tests
 # hit Ctrl+Shift+F10 or RMB on the file to run tests
-import re
-
 
 def io_func(logfile_path, result_file_path):
     def gen_line(file_path):
@@ -20,8 +18,6 @@ def io_func(logfile_path, result_file_path):
 
 
 def pure_func(file_line):
-    # pattern = re.compile(r'.*HTTP/1.1\" 304.*')
-    pattern = re.compile(r'.*HTTP *.* 304.*')
     if file_line.find("304") > 13:
         return file_line.split("-")[0].strip()
     return None
@@ -36,7 +32,9 @@ def test_myfunc_positive():
 def test_myfunc_negative():
     line = '218.30.304.62 - - [17/May/2015:11:05:17 +0000] "GET /projects/xdotool/xdotool.xhtml \
     HTTP/1.1" 200 - "-" "Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)"'
-    print(pure_func(line) == "218.30.304.62")
+    assert pure_func(line) is None
 
 
 io_func("apache_log", "result.txt")
+test_myfunc_positive()
+test_myfunc_negative()
