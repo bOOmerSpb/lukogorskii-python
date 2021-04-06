@@ -39,5 +39,4 @@ def test_myfunc_negative():
     print(pure_func(line) == "218.30.304.62")
 
 
-# test_myfunc_negative()
 io_func("apache_log", "result.txt")

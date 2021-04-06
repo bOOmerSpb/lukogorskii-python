@@ -1,4 +1,3 @@
-import pytest
 from task01 import is_armstrong
 
 
