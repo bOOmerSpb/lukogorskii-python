@@ -28,11 +28,12 @@ from typing import List
 
 
 def custom_range(*args) -> List[str]:
-    result = []
+    scope = args[0]
     size = len(args)
+    start = scope[0]
+    stop = scope[0]
     step = 1
     if size == 2:
-        start = args[0][0]
         stop = args[1]
     if size == 3:
         start = args[1]
@@ -41,6 +42,4 @@ def custom_range(*args) -> List[str]:
         start = args[1]
         stop = args[2]
         step = args[3]
-    for c in range(ord(start), ord(stop), step):
-        result.append(chr(c))
-    return result
+    return list(scope[slice(scope.index(start), scope.index(stop), step)])
