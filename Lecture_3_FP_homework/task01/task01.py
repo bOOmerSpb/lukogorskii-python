@@ -8,7 +8,7 @@
 
 def io_func(logfile_path, result_file_path):
     def gen_line(file_path):
-        with open(file_path, "r") as data:
+        with open(file_path) as data:
             for line in data:
                 yield data.readline()
 
@@ -18,7 +18,7 @@ def io_func(logfile_path, result_file_path):
 
 
 def pure_func(file_line):
-    if file_line.find("304") > 13:
+    if file_line.find("HTTP/1.1\" 304") != -1:
         return file_line.split("-")[0].strip()
     return None
 
