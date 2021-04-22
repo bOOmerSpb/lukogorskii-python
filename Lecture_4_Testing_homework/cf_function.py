@@ -3,8 +3,7 @@ from typing import List
 
 
 def get_continued_fraction(fraction: str) -> List:
-    numerator = int(fraction.split("/")[0])
-    denominator = int(fraction.split("/")[1])
+    numerator, denominator = map(int, fraction.split("/"))
     cf = []
 
     def recursion(num: int, denom: int) -> List:
