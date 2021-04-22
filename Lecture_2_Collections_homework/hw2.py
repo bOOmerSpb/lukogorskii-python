@@ -18,11 +18,9 @@ Output: 2, 1
 
 """
 from typing import List, Tuple
+from collections import Counter
 
 
 def major_and_minor_elem(inp: List) -> Tuple[int, int]:
-    inp.sort()
-    if inp.count(inp[0]) > len(inp) // 2:
-        return inp[0], inp[-1]
-    else:
-        return inp[-1], inp[0]
+    counter = Counter(inp)
+    return max(counter, key=counter.get), min(counter, key=counter.get)

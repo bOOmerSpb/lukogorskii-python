@@ -34,8 +34,7 @@ from typing import Callable, Iterable
 
 
 def validate_line(line: str) -> bool:
-    line = line.strip()
-    return len(line.split(" ")) == 5
+    return len(line.split()) == 5
 
 
 def validate_date(line: str) -> bool:
