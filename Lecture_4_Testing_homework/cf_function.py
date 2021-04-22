@@ -7,12 +7,12 @@ def get_continued_fraction(fraction: str) -> List:
     denominator = int(fraction.split("/")[1])
     cf = []
 
-    def iteration(num: int, denom: int) -> List:
+    def recursion(num: int, denom: int) -> List:
         first = math.floor(num / denom)
         cf.append(first)
         if num % denom != 0:
             num -= first * denom
-            return iteration(denom, num)
+            return recursion(denom, num)
 
-    iteration(numerator, denominator)
+    recursion(numerator, denominator)
     return cf
