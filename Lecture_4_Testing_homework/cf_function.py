@@ -1,4 +1,3 @@
-import math
 from typing import List
 
 
@@ -7,7 +6,11 @@ def get_continued_fraction(fraction: str) -> List:
     cf = []
 
     def recursion(num: int, denom: int) -> List:
-        first = math.floor(num / denom)
+        try:
+            first = num // denom
+        except ZeroDivisionError:
+            return cf
+
         cf.append(first)
         if num % denom != 0:
             num -= first * denom
