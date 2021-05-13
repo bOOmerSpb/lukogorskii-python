@@ -76,7 +76,7 @@ class HomeworkResult:
         self.homework = homework
         self.solution = solution
         self.author = author
-        self.created = homework.created
+        self.created = datetime.now()
 
 
 class Human:
