@@ -86,9 +86,6 @@ class Human:
 
 
 class Student(Human):
-    def __init__(self, first_name: str, last_name: str):
-        super().__init__(first_name, last_name)
-
     def do_homework(self, homework: Homework, solution: str) -> HomeworkResult:
         if homework.is_active():
             return HomeworkResult(self, homework, solution)
@@ -98,9 +95,6 @@ class Student(Human):
 
 class Teacher(Human):
     homework_done = defaultdict(lambda: "This homework was not done")
-
-    def __init__(self, first_name: str, last_name: str):
-        super().__init__(first_name, last_name)
 
     @staticmethod
     def create_homework(text: str, days_number: int) -> Homework:
