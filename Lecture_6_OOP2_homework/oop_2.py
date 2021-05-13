@@ -94,7 +94,7 @@ class Student(Human):
 
 
 class Teacher(Human):
-    homework_done = defaultdict(lambda: "This homework was not done")
+    homework_done = defaultdict(lambda: "Result for this homework was not found")
 
     @staticmethod
     def create_homework(text: str, days_number: int) -> Homework:
@@ -105,7 +105,7 @@ class Teacher(Human):
         key, value = result.homework, result.solution
         if len(value) > 5:
             if (key, value) not in Teacher.homework_done.items():
-                Teacher.homework_done[key] = value
+                Teacher.homework_done[key] = result
             return True
         else:
             return False
@@ -143,6 +143,5 @@ if __name__ == '__main__':
 
     opp_teacher.check_homework(result_2)
     opp_teacher.check_homework(result_3)
-
     print(Teacher.homework_done[oop_hw])
     Teacher.reset_results()
