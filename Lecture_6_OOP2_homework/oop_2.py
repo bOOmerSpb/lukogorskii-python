@@ -127,7 +127,7 @@ if __name__ == '__main__':
 
     result_1 = good_student.do_homework(oop_hw, 'I have done this hw')
     result_2 = good_student.do_homework(docs_hw, 'I have done this hw too')
-    result_3 = lazy_student.do_homework(docs_hw, 'done123')
+    result_3 = lazy_student.do_homework(docs_hw, 'done')
     try:
         result_4 = HomeworkResult(good_student, "fff", "Solution")
     except Exception:
