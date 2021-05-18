@@ -92,7 +92,7 @@ class Student(Human):
 
 
 class Teacher(Human):
-    homework_done = defaultdict(lambda: "Result for this homework was not found")
+    homework_done = defaultdict(list)
 
     @staticmethod
     def create_homework(text: str, days_number: int) -> Homework:
@@ -101,18 +101,17 @@ class Teacher(Human):
     @staticmethod
     def check_homework(result: HomeworkResult) -> bool:
         key, value = result.homework, result.solution
-        if len(value) > 5:
-            if (key, value) not in Teacher.homework_done.items():
-                Teacher.homework_done[key] = result
+        if len(value) > 5 and result not in Teacher.homework_done[key]:
+            Teacher.homework_done[key].append(result)
             return True
         else:
             return False
 
     @staticmethod
-    def reset_results(removed_hw='All'):
+    def reset_results(removed_hw=None):
         if isinstance(removed_hw, Homework):
             del Teacher.homework_done[removed_hw]
-        if removed_hw == 'All':
+        if removed_hw is None:
             Teacher.homework_done.clear()
 
 
@@ -128,7 +127,7 @@ if __name__ == '__main__':
 
     result_1 = good_student.do_homework(oop_hw, 'I have done this hw')
     result_2 = good_student.do_homework(docs_hw, 'I have done this hw too')
-    result_3 = lazy_student.do_homework(docs_hw, 'done')
+    result_3 = lazy_student.do_homework(docs_hw, 'done123')
     try:
         result_4 = HomeworkResult(good_student, "fff", "Solution")
     except Exception:
